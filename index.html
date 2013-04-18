@@ -11,14 +11,14 @@
 					var canvasBlock = document.getElementById('test-canvas');
 					var canvas = canvasBlock.getContext('2d');
 
-                  if(prevX&&prevY){
-					canvas.beginPath();
-					canvas.moveTo(prevX, prevY);
-					canvas.lineTo(event.gesture.center.pageX,event.gesture.center.pageY);
-					canvas.lineWidth = 3;
-					canvas.strokeStyle = '#000';
-					canvas.stroke();
-                   }
+					if(prevX&&prevY){
+						canvas.beginPath();
+						canvas.moveTo(prevX, prevY);
+						canvas.lineTo(event.gesture.center.pageX,event.gesture.center.pageY);
+						canvas.lineWidth = 3;
+						canvas.strokeStyle = '#000';
+						canvas.stroke();
+					}
 
 				prevX = event.gesture.center.pageX;
 				prevY = event.gesture.center.pageY;
