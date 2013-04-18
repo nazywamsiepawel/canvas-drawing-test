@@ -4,26 +4,26 @@
 		<script src="js/jquery.js"></script>
 		<script src="js/hammer.js"></script>
 		<script>
-		    var prevX = false; var prevY = false;
+			var prevX = false; var prevY = false;
 			$(document).ready(function(){
 				var element = document.getElementById('test-canvas');
-                var hammertime = Hammer(element).on("drag", function(event) {
-              	  var canvasBlock = document.getElementById('test-canvas');
-   	  			  var canvas = canvasBlock.getContext('2d');
+				var hammertime = Hammer(element).on("drag", function(event) {
+					var canvasBlock = document.getElementById('test-canvas');
+					var canvas = canvasBlock.getContext('2d');
 
                   if(prevX&&prevY){
-	                	canvas.beginPath();
-	    				canvas.moveTo(prevX, prevY);
-		   				canvas.lineTo(event.gesture.center.pageX,event.gesture.center.pageY);
-		   				canvas.lineWidth = 3;
-	  					canvas.strokeStyle = '#000';
-		    			canvas.stroke();
+					canvas.beginPath();
+					canvas.moveTo(prevX, prevY);
+					canvas.lineTo(event.gesture.center.pageX,event.gesture.center.pageY);
+					canvas.lineWidth = 3;
+					canvas.strokeStyle = '#000';
+					canvas.stroke();
                    }
 
-                  prevX = event.gesture.center.pageX;
-                  prevY = event.gesture.center.pageY;
+				prevX = event.gesture.center.pageX;
+				prevY = event.gesture.center.pageY;
 
-                });
+				});
 			});
 		</script>
 	</head>
