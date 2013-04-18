@@ -4,6 +4,7 @@
 		<script src="js/jquery.js"></script>
 		<script src="js/hammer.js"></script>
 		<script>
+
 			var prevX = false; var prevY = false;
 			$(document).ready(function(){
 				var element = document.getElementById('test-canvas');
@@ -15,7 +16,7 @@
 						canvas.beginPath();
 						canvas.moveTo(prevX, prevY);
 						canvas.lineTo(event.gesture.center.pageX,event.gesture.center.pageY);
-						canvas.lineWidth = 3;
+						canvas.lineWidth = 5;
 						canvas.strokeStyle = '#000';
 						canvas.stroke();
 					}
@@ -25,11 +26,40 @@
 
 				});
 			});
+
+			function convertToBinaryArray(){
+				alert('start');
+				var binary = [];
+				var canvasBlock = document.getElementById('test-canvas');
+				var canvas = canvasBlock.getContext('2d');
+				var id = canvas.getImageData(0, 0, 1000, 1000);
+				var pixels = id.data;
+				var length = pixels.length;
+				var width = id.width;
+				var height = id.height;
+
+				console.log(width);
+				console.log(height);
+				console.log(length);
+
+				for (var i = 0; i < length; i += 4) {
+					if(pixels[i+3]){
+						binary.push(1)
+					} else binary.push(0);
+
+					//console.log(pixels[i], pixels[i+1], pixels[i+2], pixels[i+3]);
+				}
+				console.log(JSON.stringify({data:binary}));
+				alert('finished');
+			}
+
 		</script>
 	</head>
 
 	<body>
-		<canvas id="test-canvas" width="500" height="500" style="border:1px solid black;">
+		<canvas id="test-canvas" width="1000" height="1000" style="border:1px solid black;">
 		</canvas>
+
+		<a href="javascript:convertToBinaryArray()">Convert to binary array</a>
 	</body>
 </html>
